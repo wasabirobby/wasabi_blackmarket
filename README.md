@@ -16,7 +16,6 @@ This resource was created as a free alternative for a alternating black market s
 ## Requirements
 - es_extended (v1.2 and above, easy to adjust for older though)
 - qtarget
-- mysql-async or oxmysql (Change in fxmanifest to whichever)
 
 
 ## Installation
@@ -29,13 +28,12 @@ This resource was created as a free alternative for a alternating black market s
 - Only supports weapons as items (May add config option for server owners who use weapons in the future)
 - Images must match the same name as the item name in config and placed in the `html/images` directory
 - Will add additional features such as random police notify soon when I have time
-- If using oxmysql simply change the `fxmanifest.lua` line `'@mysql-async/lib/MySQL.lua'` to `'@oxmysql/lib/MySQL.lua'`
 
 ## Preview
 - Simple Preview: https://www.youtube.com/watch?v=aoZngJ2I81k
 
 - Server console on start: https://cdn.discordapp.com/attachments/894737355418771506/966159496105820181/consoleprint.png
-- Webhook preview: https://cdn.discordapp.com/attachments/894737355418771506/966159496361697310/webhooks.png
+- Webhook preview: https://cdn.discordapp.com/attachments/894737355418771506/966195867705032724/unknown.png
 
 # Support
 Join our discord <a href='https://discord.gg/XJFNyMy3Bv'>HERE</a> for additional scripts and support!
