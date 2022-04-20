@@ -56,7 +56,7 @@ AddEventHandler('wasabi_blackmarket:bI', function(itemName, amount, coords)
 			xPlayer.removeAccountMoney(Config.PayAccount, price)
 			xPlayer.addInventoryItem(itemName, amount)
 			local label = xPlayer.getInventoryItem(itemName).label
-			sendToDiscord(Strings['purchase_title'], (Strings['purchase_message']):format(xPlayer.identifier, amount, itemName, ESX.Math.GroupDigits(price), 5763719))
+			sendToDiscord(Strings['purchase_title'], (Strings['purchase_message']):format(xPlayer.identifier, xPlayer.getName(), amount, itemName, ESX.Math.GroupDigits(price), 5763719))
 			TriggerClientEvent('wasabi_blackmarket:notify', source, (Strings['purchase_notify']):format(amount, label, ESX.Math.GroupDigits(price)))
 		else
 			TriggerClientEvent('wasabi_blackmarket:notify', source, Strings['no_room_notify'])
