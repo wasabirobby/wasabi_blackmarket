@@ -9,7 +9,7 @@ ui_page 'html/index.html'
 
 author 'wasabirobby'
 
-version '1.0.0'
+version '1.0.1'
 
 files {
 	'html/index.html',
@@ -21,7 +21,6 @@ files {
 }
 
 server_scripts {
-	'@mysql-async/lib/MySQL.lua', -- Change 'mysql-async' to 'oxmysql' if using ox instead
 	'config.lua',
 	'server/*.lua',
 }
