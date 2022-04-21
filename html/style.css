@@ -1,0 +1,126 @@
+body {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-user-select: none; 
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(Roboto-Regular.ttf);
+}
+
+.container {
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+}
+
+.shop {
+    background-color: rgba(0,0,0,0.7);
+    border-left: 1.5px solid rgba(29, 29, 29, 0.7);
+    border-bottom: 1.5px solid rgba(29, 29, 29, 0.7);
+    border-right: 1.5px solid rgba(29, 29, 29, 0.7);
+    width: 420px;
+    height: 470px;
+    position: absolute;
+    margin-left: 39.89%;
+    margin-top: 0%;
+    border-bottom-left-radius: 2%;
+    border-bottom-right-radius: 2%;
+}
+
+.shopheader {
+    background-image: repeating-linear-gradient(to right, rgb(28, 29, 30), rgb(255, 0, 0));
+    background-size: 200% 200%;
+    background-position: 100% 100%;  
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-left: 39.92%;
+    margin-top: 14%;
+    width: 422.5px;
+    height: 29.9px;
+    animation: fade 10s ease infinite;
+}
+
+.shopheader {
+    -webkit-animation: Fade 10s ease infinite;
+    -moz-animation: Fade 10s ease infinite;
+    animation: Fade 10s ease infinite;
+}
+
+.item img {
+    width: 48px;
+    height: 48px;
+    margin-left: 2.9%;
+    margin-top: 5%;
+    display: inline-block;
+}
+
+.shop p {
+    margin-top: -5.5%;
+    margin-left: -2%;
+    color: white;
+    font-family: Roboto;
+    text-align: center;
+}
+
+.item {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    width: 200px;
+    height: 70px;
+    border-radius: 5px;
+    margin-left: 1%;
+    overflow: hidden;
+}
+
+.label p {
+    margin-top: -35%;
+    margin-left: 29%;
+    line-height: 4.5;
+    text-align: left;
+}
+
+.item:hover {
+    background-image: repeating-linear-gradient(to right, rgb(28, 29, 30), rgb(255, 0, 0));
+    background-size: 200% 200%;
+    background-position: 100% 100%;  
+}
+
+@-webkit-keyframes Fade {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@-moz-keyframes Fade {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@keyframes Fade { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}

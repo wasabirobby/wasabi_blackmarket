@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="shopheader"></div>
+        <div class="shop">
+            <p>Black Market</p>
+            <div class="items">
+            </div>
+        </div>
+    </div>
+    <script>
+    $(document).keyup(function (e) {
+        if (e.key === "Escape") {
+            $(".items").empty();
+            $(".container").fadeOut(100);
+            $.post('https://wasabi_blackmarket/focusOff');
+        }
+    });
+    </script>
+</body>
+</html>
