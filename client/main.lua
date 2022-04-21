@@ -10,9 +10,6 @@ CreateThread(function()
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 		Wait(0)
 	end
-	while ESX.GetPlayerData().job.name == nil do -- Todo: Police crackdown
-		Wait(1000)
-	end
 	if Config.MarketPed == nil then
 		TriggerEvent('wasabi_blackmarket:getConfig')
 	end
