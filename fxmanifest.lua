@@ -33,5 +33,5 @@ shared_script 'strings.lua'
 
 dependencies {
 	'es_extended',
-	'qtarget'
+	--'qtarget' Removed as dependency because 3d text option provided in config
 }
