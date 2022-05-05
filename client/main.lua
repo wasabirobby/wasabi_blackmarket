@@ -54,22 +54,41 @@ CreateThread(function()
 		Wait(1000)
 	end
 	local coords = Config.randomLocation.coords
-	exports.qtarget:AddBoxZone("BlkMarket", vector3(coords.x, coords.y, coords.z), 1.0, 1.0, {
-		name="BlkMarket",
-		heading=11.0,
-		debugPoly=false,
-		minZ=coords.z-3,
-		maxZ=coords.z+3,
-		}, {
-			options = {
-				{
-					event = "wasabi_blackmarket:openShop",
-					icon = "fas fa-briefcase",
-					label = Strings['open_market'],
+	if Config.qtarget then
+		exports.qtarget:AddBoxZone("BlkMarket", vector3(coords.x, coords.y, coords.z), 1.0, 1.0, {
+			name="BlkMarket",
+			heading=11.0,
+			debugPoly=false,
+			minZ=coords.z-3,
+			maxZ=coords.z+3,
+			}, {
+				options = {
+					{
+						event = "wasabi_blackmarket:openShop",
+						icon = "fas fa-briefcase",
+						label = Strings['open_market'],
+					},
 				},
-			},
-			distance = 3.5
-	})
+				distance = 3.5
+		})
+	else
+		CreateThread(function()
+			while true do
+				local sleep = 1500
+				local plyCoords = GetEntityCoords(PlayerPedId())
+				local dist = #(plyCoords - coords)
+				if dist <= 3 then
+					sleep = 0
+					local txtPos = vector3(coords.x, coords.y, coords.z+0.9)--GetOffsetFromEntityInWorldCoords(coords, 0.0, 0.0, 0.0)
+					DrawText3D(txtPos, Strings['three_d_txt'])
+					if dist <= 2 and IsControlJustPressed(0, 38) then
+						TriggerEvent('wasabi_blackmarket:openShop')
+					end
+				end
+				Wait(sleep)
+			end
+		end)
+	end
 end)
 
 -- Ped spawn thread
