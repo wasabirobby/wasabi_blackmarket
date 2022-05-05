@@ -5,17 +5,18 @@ This resource was created as a free alternative for a alternating black market s
 <b>Features:</b>
 - Custom UI(Credits to whoever created 'Shops UI' : https://forum.cfx.re/t/release-esx-shops-ui/1025053)
 - Option to add multiple locations where black market ped will spawn at randomly per server restart
+- Option to use qtarget OR just 3D Text
 - Config saved to server side and sent to client via callback to eliminate sweaty kids from attempting to obtain location via client dump
 - Location and additional security checks to ensure no one triggers events for profit
 - Ability to add custom images or just drag over inventory image of item name into the `html/images/` directory
 - All weapon item images have already been added for your convenience(Credits to `linden_inventory` for those images)
 - Configurable webhooks for purchase logs as well as exploit logs
-- 0.00 MS on idle - 0.00 MS while in use
+- 0.00 MS on idle - 0.00 MS while in use (Using qtarget)
 - It's FREE
 
 ## Requirements
 - es_extended (v1.2 and above, easy to adjust for older though)
-- qtarget
+- qtarget (OPTIONAL IN CONFIG)
 
 
 ## Installation
@@ -31,6 +32,7 @@ This resource was created as a free alternative for a alternating black market s
 
 ## Preview
 - Simple Preview: https://www.youtube.com/watch?v=aoZngJ2I81k
+- 3D Text(Alternative to using target): https://cdn.discordapp.com/attachments/894737355418771506/971908582763266068/3doption.png
 
 - Server console on start: https://cdn.discordapp.com/attachments/894737355418771506/966159496105820181/consoleprint.png
 - Webhook preview: https://cdn.discordapp.com/attachments/894737355418771506/966195867705032724/unknown.png
