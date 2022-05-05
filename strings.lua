@@ -4,6 +4,9 @@
 Strings = {
 	-- Target strings
 	['open_market'] = 'Open Market',
+	
+	-- 3D Text
+	['three_d_txt'] = '~INPUT_PICKUP~ To Interact',
 
 	-- Discord strings
 	['exploit_title'] = 'BLACKMARKET EXPLOIT DETECTED!',
