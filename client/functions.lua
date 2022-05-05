@@ -18,6 +18,25 @@ ShowHelp = function(msg)
     EndTextCommandDisplayHelp(0, false, true, -1)
 end
 
+DrawText3D = function(coords, text)
+    local str = text
+
+    local start, stop = string.find(text, "~([^~]+)~")
+    if start then
+        start = start - 1
+        stop = stop + 1
+        str = ""
+        str = str .. string.sub(text, 0, start) .. "   " .. string.sub(text, start+1, stop-1) .. string.sub(text, stop, #text)
+    end
+
+    AddTextEntry(GetCurrentResourceName(), str)
+    BeginTextCommandDisplayHelp(GetCurrentResourceName())
+    EndTextCommandDisplayHelp(2, false, false, -1)
+
+	SetFloatingHelpTextWorldPosition(1, coords)
+	SetFloatingHelpTextStyle(1, 1, 2, -1, 3, 0)
+end
+
 ShowNotification = function(msg)
 	SetNotificationTextEntry('STRING')
 	AddTextComponentString(msg)
