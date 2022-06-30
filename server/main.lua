@@ -42,10 +42,14 @@ AddEventHandler('wasabi_blackmarket:bI', function(itemName, amount, coords)
 	end
 	local price = 0
 	local itemLabel = ''
+	local itemType = ''
 	for i=1, #Config.Items, 1 do
 		if Config.Items[i].item == itemName then
 			price = Config.Items[i].price
 			itemLabel = Config.Items[i].label
+			if Config.Items[i].type then
+				itemType = Config.Items[i].type
+			end
 			break
 		end
 	end
@@ -54,7 +58,11 @@ AddEventHandler('wasabi_blackmarket:bI', function(itemName, amount, coords)
 	if xMoney >= price then
 		if xPlayer.canCarryItem(itemName, amount) then
 			xPlayer.removeAccountMoney(Config.PayAccount, price)
-			xPlayer.addInventoryItem(itemName, amount)
+			if itemType == 'weapon' then
+				xPlayer.addWeapon(itemName, 200)
+			else
+				xPlayer.addInventoryItem(itemName, amount)
+			end
 			local label = xPlayer.getInventoryItem(itemName).label
 			sendToDiscord(Strings['purchase_title'], (Strings['purchase_message']):format(xPlayer.identifier, xPlayer.getName(), amount, itemName, ESX.Math.GroupDigits(price), 5763719))
 			TriggerClientEvent('wasabi_blackmarket:notify', source, (Strings['purchase_notify']):format(amount, label, ESX.Math.GroupDigits(price)))
