@@ -4,6 +4,7 @@
 Config = {}
 
 Config.PayAccount = 'black_money' -- Account you want the black market to use('black_money', 'money', 'bank')
+Config.OldESX = false, -- Set to true for older ESX versions lacking xPlayer.canCarryItem function
 Config.qtarget = true -- Use target? If set to false will use 3D text
 Config.MarketPed = `a_m_m_og_boss_01` -- Jenkins hash of ped here
 Config.WebhookLink = '' -- Webhook here / leave as is if you don't want to use
