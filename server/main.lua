@@ -56,23 +56,35 @@ AddEventHandler('wasabi_blackmarket:bI', function(itemName, amount, coords)
 	price = price * amount
 	local xMoney = xPlayer.getAccount(Config.PayAccount).money
 	if xMoney >= price then
-		if xPlayer.canCarryItem(itemName, amount) then
-			xPlayer.removeAccountMoney(Config.PayAccount, price)
-			if itemType == 'weapon' then
-				xPlayer.addWeapon(itemName, 200)
-			else
-				xPlayer.addInventoryItem(itemName, amount)
-			end
-			local label = xPlayer.getInventoryItem(itemName).label
-			sendToDiscord(Strings['purchase_title'], (Strings['purchase_message']):format(xPlayer.identifier, xPlayer.getName(), amount, itemName, ESX.Math.GroupDigits(price), 5763719))
-			TriggerClientEvent('wasabi_blackmarket:notify', source, (Strings['purchase_notify']):format(amount, label, ESX.Math.GroupDigits(price)))
-		else
-			TriggerClientEvent('wasabi_blackmarket:notify', source, Strings['no_room_notify'])
-		end
-	else
-		local missingMoney = price - xMoney
-		TriggerClientEvent('wasabi_blackmarket:notify', source, (Strings['not_enough_notify']):format((ESX.Math.GroupDigits(missingMoney))))
-	end
+        if Config.OldESX then
+            xPlayer.removeAccountMoney(Config.PayAccount, price)
+            if itemType == 'weapon' then
+                xPlayer.addWeapon(itemName, 200)
+            else
+                xPlayer.addInventoryItem(itemName, amount)
+            end
+            local label = xPlayer.getInventoryItem(itemName).label
+            sendToDiscord(Strings['purchase_title'], (Strings['purchase_message']):format(xPlayer.identifier, xPlayer.getName(), amount, itemName, ESX.Math.GroupDigits(price), 5763719))
+            TriggerClientEvent('wasabi_blackmarket:notify', source, (Strings['purchase_notify']):format(amount, label, ESX.Math.GroupDigits(price)))
+        else
+            if xPlayer.canCarryItem(itemName, amount) then
+                xPlayer.removeAccountMoney(Config.PayAccount, price)
+                if itemType == 'weapon' then
+                    xPlayer.addWeapon(itemName, 200)
+                else
+                    xPlayer.addInventoryItem(itemName, amount)
+                end
+                local label = xPlayer.getInventoryItem(itemName).label
+                sendToDiscord(Strings['purchase_title'], (Strings['purchase_message']):format(xPlayer.identifier, xPlayer.getName(), amount, itemName, ESX.Math.GroupDigits(price), 5763719))
+                TriggerClientEvent('wasabi_blackmarket:notify', source, (Strings['purchase_notify']):format(amount, label, ESX.Math.GroupDigits(price)))
+            else
+                TriggerClientEvent('wasabi_blackmarket:notify', source, Strings['no_room_notify'])
+            end
+        end
+    else
+        local missingMoney = price - xMoney
+        TriggerClientEvent('wasabi_blackmarket:notify', source, (Strings['not_enough_notify']):format((ESX.Math.GroupDigits(missingMoney))))
+    end
 end)
 
 RegisterServerEvent('wasabi_blackmarket:later')
