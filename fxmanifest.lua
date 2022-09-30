@@ -9,7 +9,7 @@ ui_page 'html/index.html'
 
 author 'wasabirobby'
 
-version '1.0.6'
+version '1.0.7'
 
 files {
 	'html/index.html',
