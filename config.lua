@@ -1,7 +1,10 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+
 Config = {}
+
+Config.checkForUpdates = true -- Check for Updates?
 
 Config.PayAccount = 'black_money' -- Account you want the black market to use('black_money', 'money', 'bank')
 Config.OldESX = false -- Set to true for older ESX versions lacking xPlayer.canCarryItem function
