@@ -1,15 +1,12 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
-ESX = nil
+
+ESX = exports['es_extended']:getSharedObject()
 Config = {}
 
 -- Start up thread
 CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Wait(0)
-	end
 	if Config.MarketPed == nil then
 		TriggerEvent('wasabi_blackmarket:getConfig')
 	end

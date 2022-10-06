@@ -4,7 +4,7 @@
 Strings = {
 	-- Target strings
 	['open_market'] = 'Open Market',
-	
+
 	-- 3D Text
 	['three_d_txt'] = '~INPUT_PICKUP~ To Interact',
 
@@ -19,8 +19,6 @@ Strings = {
 	['purchase_notify'] = 'You bought %sx %s for $%s',
     ['no_room_notify'] = 'You don\'t have enough room in your inventory for this purchase!',
     ['not_enough_notify'] = 'You don\'t have enough money, you lack $%s',
-
-
 
 	-- Kick
 	['kick_msg'] = 'Nice try! Your actions have been reported to staff.',

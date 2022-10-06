@@ -42,7 +42,6 @@ Config.Items = { -- If weapons are not as items (Older inventories) then set typ
 --		price = 42500,
 --		type = 'weapon'
 --	},
-
 	{
 		label = 'Compact Rifle',
 		item = 'WEAPON_COMPACTRIFLE',
@@ -103,5 +102,4 @@ Config.Items = { -- If weapons are not as items (Older inventories) then set typ
 		item = 'WEAPON_GRENADE',
 		price = 1250
 	},
-
 }
