@@ -18,7 +18,7 @@ Config.Locations = { --[[ Locations black market ped will spawn at random per re
 		coords = vector3(241.23, 131.55, 102.6),
 		heading = 153.14
 	},
-	
+
 	[2] = {
 		coords = vector3(289.8, -1204.34, 29.29),
 		heading = 275.48
@@ -33,7 +33,6 @@ Config.Locations = { --[[ Locations black market ped will spawn at random per re
 		coords = vector3(57.89, -1733.11, 29.31),
 		heading = 59.03
 	},
-
 }
 
 Config.randomLocation = Config.Locations[math.random(1,#Config.Locations)]
