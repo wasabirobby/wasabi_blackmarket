@@ -22,6 +22,5 @@ Strings = {
     ['not_enough_notify'] = 'You don\'t have enough money, you lack $%s',
 
 	-- Kick
-	['kick_msg'] = 'Nice try! Your actions have been reported to staff.',
-
+	['kick_msg'] = 'Nice try! Your actions have been reported to staff.'
 }
