@@ -1,9 +1,8 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
-ESX = nil
 
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+ESX = exports['es_extended']:getSharedObject()
 
 ESX.RegisterServerCallback('wasabi_blackmarket:configCallback', function(source, cb)
     cb(Config)
@@ -97,14 +96,14 @@ end)
 
 function sendToDiscord(name, message, color)
 	local connect = {
-		  {
-			  ["color"] = color,
-			  ["title"] = "**".. name .."**",
-			  ["description"] = message,
-			  ["footer"] = {
-			  ["text"] = "wasabi_blackmarket - by wasabirobby",
-			  },
-		  }
-	  }
+		{
+			["color"] = color,
+			["title"] = "**".. name .."**",
+			["description"] = message,
+			["footer"] = {
+				["text"] = "wasabi_blackmarket - by wasabirobby",
+			},
+		}
+	}
 	PerformHttpRequest(Config.WebhookLink, function(err, text, headers) end, 'POST', json.encode({username = 'wasabi_blackmarket', embeds = connect, avatarrl = 'https://cdn.discordapp.com/attachments/963717003351302174/963717089426804746/tebexbanner.png'}), { ['Content-Type'] = 'application/json' })
 end

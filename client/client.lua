@@ -1,15 +1,12 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
-ESX = nil
+
+ESX = exports['es_extended']:getSharedObject()
 Config = {}
 
 -- Start up thread
 CreateThread(function()
-	while ESX == nil do
-		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-		Wait(0)
-	end
 	if Config.MarketPed == nil then
 		TriggerEvent('wasabi_blackmarket:getConfig')
 	end
@@ -23,7 +20,6 @@ AddEventHandler('wasabi_blackmarket:getConfig', function()
 		Config = c
 	end)
 end)
-
 
 AddEventHandler('wasabi_blackmarket:getRandomLoc', function()
 	ESX.TriggerServerCallback('wasabi_blackmarket:randomLocCB', function(c)
@@ -79,7 +75,7 @@ CreateThread(function()
 				local dist = #(plyCoords - coords)
 				if dist <= 3 then
 					sleep = 0
-					local txtPos = vector3(coords.x, coords.y, coords.z+0.9)--GetOffsetFromEntityInWorldCoords(coords, 0.0, 0.0, 0.0)
+					local txtPos = vector3(coords.x, coords.y, coords.z+0.9) -- GetOffsetFromEntityInWorldCoords(coords, 0.0, 0.0, 0.0)
 					DrawText3D(txtPos, Strings['three_d_txt'])
 					if dist <= 2 and IsControlJustPressed(0, 38) then
 						TriggerEvent('wasabi_blackmarket:openShop')
@@ -126,16 +122,11 @@ end)
 
 
 -- Events
-
 RegisterNetEvent('wasabi_blackmarket:notify')
 AddEventHandler('wasabi_blackmarket:notify', function(message)	
-	
--- Place notification system info here, ex: exports['mythic_notify']:SendAlert('inform', message) or just leave alone
+--  Place notification system info here, ex: exports['mythic_notify']:SendAlert('inform', message) or just leave alone
 	ShowNotification(message)
-
-
 end)
-
 
 AddEventHandler('wasabi_blackmarket:openShop', function()
 	local playerPed = PlayerPedId()
@@ -148,10 +139,6 @@ AddEventHandler('wasabi_blackmarket:openShop', function()
 		end
 	end, coords)
 end)
-
-
-
-
 
 -- NUI
 RegisterNUICallback('bI', function(data, cb)

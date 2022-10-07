@@ -1,7 +1,10 @@
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
+
 Config = {}
+
+Config.checkForUpdates = true -- Check for Updates?
 
 Config.PayAccount = 'black_money' -- Account you want the black market to use('black_money', 'money', 'bank')
 Config.OldESX = false -- Set to true for older ESX versions lacking xPlayer.canCarryItem function
@@ -15,7 +18,7 @@ Config.Locations = { --[[ Locations black market ped will spawn at random per re
 		coords = vector3(241.23, 131.55, 102.6),
 		heading = 153.14
 	},
-	
+
 	[2] = {
 		coords = vector3(289.8, -1204.34, 29.29),
 		heading = 275.48
@@ -30,7 +33,6 @@ Config.Locations = { --[[ Locations black market ped will spawn at random per re
 		coords = vector3(57.89, -1733.11, 29.31),
 		heading = 59.03
 	},
-
 }
 
 Config.randomLocation = Config.Locations[math.random(1,#Config.Locations)]
@@ -42,7 +44,6 @@ Config.Items = { -- If weapons are not as items (Older inventories) then set typ
 --		price = 42500,
 --		type = 'weapon'
 --	},
-
 	{
 		label = 'Compact Rifle',
 		item = 'WEAPON_COMPACTRIFLE',
@@ -103,5 +104,4 @@ Config.Items = { -- If weapons are not as items (Older inventories) then set typ
 		item = 'WEAPON_GRENADE',
 		price = 1250
 	},
-
 }
