@@ -12,17 +12,17 @@ else
 	print("No FrameWork Found")
 end
 
-loadModel = function(model)
+function loadModel(model)
     while not HasModelLoaded(model) do Wait(0) RequestModel(model) end
     return model
 end
 
-loadDict = function(dict)
+function loadDict(dict)
     while not HasAnimDictLoaded(dict) do Wait(0) RequestAnimDict(dict) end
     return dict
 end
 
-ShowHelp = function(msg)
+function ShowHelp(msg)
     lib.notify({
         title = 'Black Market',
         description = msg,
@@ -30,7 +30,7 @@ ShowHelp = function(msg)
     })
 end
 
-DrawText3D = function(coords, text)
+function DrawText3D(coords, text)
     local str = text
 
     local start, stop = string.find(text, "~([^~]+)~")
@@ -49,7 +49,7 @@ DrawText3D = function(coords, text)
 	SetFloatingHelpTextStyle(1, 1, 2, -1, 3, 0)
 end
 
-ShowNotification = function(msg)
+function ShowNotification(msg)
 	lib.notify({
         title = 'Black Market',
         description = msg,
@@ -68,7 +68,8 @@ CreateBlip = function(coords, sprite, colour, text, scale)
     EndTextCommandSetBlipName(blip)
 end
 
-OpenBlackMarket = function()
+function OpenBlackMarket()
+    print('test ok')
 	local elements = {}
 	SetNuiFocus(true, true)
 	SendNUIMessage({
@@ -83,6 +84,7 @@ OpenBlackMarket = function()
 		})
 	end
 end
-bigRewards = function()
+
+function bigRewards()
 	TriggerServerEvent('wasabi_blackmarket:later')
 end

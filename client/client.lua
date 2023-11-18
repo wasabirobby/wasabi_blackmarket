@@ -4,6 +4,8 @@
 
 Config = {}
 
+
+
 -- Start up thread
 CreateThread(function()
 	if Config.MarketPed == nil then
@@ -138,13 +140,12 @@ end)
 
 AddEventHandler('wasabi_blackmarket:openShop', function()
 		local coords = GetEntityCoords(cache.ped)
-		lib.callback('wasabi_blackmarket:canOpen',false, function(canopen)
-		if canopen then
+		local canOpen = lib.callback.await('wasabi_blackmarket:canOpen',false,coords)
+		if canOpen then
 			OpenBlackMarket()
-		elseif not canopen then
-			bigRewards()
+		elseif not canOpen then
+		--	bigRewards()
 		end
-	end,coords)
 end)
 
 -- NUI

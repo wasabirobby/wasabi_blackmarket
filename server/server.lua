@@ -10,10 +10,10 @@ lib.callback.register('wasabi_blackmarket:randomLocCB', function(source)
     return Config.randomLocation
 end)
 
-lib.callback.register('wasabi_blackmarket:canOpen', function(source)
-	local location = Core.Functions.GetCoords(GetPlayer(source))
+lib.callback.register('wasabi_blackmarket:canOpen', function(source,location)
 	local dist = #(Config.randomLocation.coords - location)
-	if dist <= 10 then
+	if dist <= 10.0 then
+		print('test ok')
 		return true
 	else
 		return false
