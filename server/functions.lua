@@ -1,7 +1,7 @@
 if GetResourceState('qb-core') == 'started' then  
 	Core = exports['qb-core']:GetCoreObject()
 	Framework = 'qb'
-elseif GetResourceState('qes_extended') == 'started' then 
+elseif GetResourceState('es_extended') == 'started' then 
 	Core = exports['es_extended']:getSharedObject()
 	Framework = 'esx'
 else 
