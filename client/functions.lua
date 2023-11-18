@@ -2,6 +2,16 @@
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 
+if GetResourceState('qb-core') == 'started' then  
+	Core = exports['qb-core']:GetCoreObject()
+	Framework = 'qb'
+elseif GetResourceState('qes_extended') == 'started' then 
+	Core = exports['es_extended']:getSharedObject()
+	Framework = 'esx'
+else 
+	print("No FrameWork Found")
+end
+
 loadModel = function(model)
     while not HasModelLoaded(model) do Wait(0) RequestModel(model) end
     return model
@@ -13,9 +23,11 @@ loadDict = function(dict)
 end
 
 ShowHelp = function(msg)
-    BeginTextCommandDisplayHelp('STRING')
-    AddTextComponentSubstringPlayerName(msg)
-    EndTextCommandDisplayHelp(0, false, true, -1)
+    lib.notify({
+        title = 'Black Market',
+        description = msg,
+        type = 'success'
+    })
 end
 
 DrawText3D = function(coords, text)
@@ -38,9 +50,11 @@ DrawText3D = function(coords, text)
 end
 
 ShowNotification = function(msg)
-	SetNotificationTextEntry('STRING')
-	AddTextComponentString(msg)
-	DrawNotification(0,1)
+	lib.notify({
+        title = 'Black Market',
+        description = msg,
+        type = 'success'
+    })
 end
 
 CreateBlip = function(coords, sprite, colour, text, scale)
@@ -65,7 +79,7 @@ OpenBlackMarket = function()
 		SendNUIMessage({
 			itemLabel = item.label,
 			item = item.item,
-			price = ESX.Math.GroupDigits(item.price)
+			price = string.format(item.price)
 		})
 	end
 end

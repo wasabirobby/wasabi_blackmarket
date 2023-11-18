@@ -2,7 +2,6 @@
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
 
-ESX = exports['es_extended']:getSharedObject()
 Config = {}
 
 -- Start up thread
@@ -16,25 +15,34 @@ CreateThread(function()
 end)
 
 AddEventHandler('wasabi_blackmarket:getConfig', function()
-	ESX.TriggerServerCallback('wasabi_blackmarket:configCallback', function(c)
-		Config = c
-	end)
+	Config =lib.callback('wasabi_blackmarket:configCallback')
+	
 end)
 
 AddEventHandler('wasabi_blackmarket:getRandomLoc', function()
-	ESX.TriggerServerCallback('wasabi_blackmarket:randomLocCB', function(c)
-		Config.randomLocation = c
+	Config.randomLocation = lib.callback('wasabi_blackmarket:randomLocCB', function(Config)
 	end)
 end)
+if Framework == 'esx' then 
+	AddEventHandler('esx:OnPlayerSpawn', function()
+		if Config.MarketPed == nil then
+			TriggerEvent('wasabi_blackmarket:getConfig')
+		end
+		if Config.randomLocation == nil then
+			TriggerEvent('wasabi_blackmarket:getRandomLoc')
+		end
+	end)
+else 
+	AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+		if Config.MarketPed == nil then
+			TriggerEvent('wasabi_blackmarket:getConfig')
+		end
+		if Config.randomLocation == nil then
+			TriggerEvent('wasabi_blackmarket:getRandomLoc')
+		end
+	end)
+end
 
-AddEventHandler('esx:OnPlayerSpawn', function()
-    if Config.MarketPed == nil then
-		TriggerEvent('wasabi_blackmarket:getConfig')
-	end
-	if Config.randomLocation == nil then
-		TriggerEvent('wasabi_blackmarket:getRandomLoc')
-	end
-end)
 
 AddEventHandler('playerSpawned', function()
     if Config.MarketPed == nil then
@@ -71,7 +79,7 @@ CreateThread(function()
 		CreateThread(function()
 			while true do
 				local sleep = 1500
-				local plyCoords = GetEntityCoords(PlayerPedId())
+				local plyCoords = GetEntityCoords(cache.ped)
 				local dist = #(plyCoords - coords)
 				if dist <= 3 then
 					sleep = 0
@@ -97,7 +105,7 @@ CreateThread(function()
 	end
 	while true do
 		local sleep = 1500
-		local playerPed = PlayerPedId()
+		local playerPed = cache.ped
 		local plyCoords = GetEntityCoords(playerPed)
 		local dist = #(plyCoords - Config.randomLocation.coords)
 		if dist <= 50 and not pedSpawned then
@@ -129,20 +137,19 @@ AddEventHandler('wasabi_blackmarket:notify', function(message)
 end)
 
 AddEventHandler('wasabi_blackmarket:openShop', function()
-	local playerPed = PlayerPedId()
-	local coords = GetEntityCoords(playerPed)
-	ESX.TriggerServerCallback('wasabi_blackmarket:canOpen', function(cb)
-		if cb then
+		local coords = GetEntityCoords(cache.ped)
+		lib.callback('wasabi_blackmarket:canOpen',false, function(canopen)
+		if canopen then
 			OpenBlackMarket()
-		elseif not cb then
+		elseif not canopen then
 			bigRewards()
 		end
-	end, coords)
+	end,coords)
 end)
 
 -- NUI
 RegisterNUICallback('bI', function(data, cb)
-	local playerPed = PlayerPedId()
+	local playerPed = cache.ped
 	local coords = GetEntityCoords(playerPed)
 	TriggerServerEvent('wasabi_blackmarket:bI', data.item, 1, coords)
 end)

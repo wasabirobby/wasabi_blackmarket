@@ -32,9 +32,5 @@ client_scripts {
 	'client/*.lua'
 }
 
-shared_script 'strings.lua'
+shared_script {'strings.lua' , '@ox_lib/init.lua' }
 
-dependencies {
-	'es_extended',
-	--'qtarget' Removed as dependency because 3d text option provided in config
-}
