@@ -38,12 +38,12 @@ Config.Locations = { --[[ Locations black market ped will spawn at random per re
 Config.randomLocation = Config.Locations[math.random(1,#Config.Locations)]
 
 Config.Items = { -- If weapons are not as items (Older inventories) then set type = 'weapon' to paramaters like the one commented out under
---	{
---		label = 'Compact Rifle',
---		item = 'WEAPON_COMPACTRIFLE',
---		price = 42500,
---		type = 'weapon'
---	},
+	{
+		label = 'Compact Rifle',
+		item = 'WEAPON_COMPACTRIFLE',
+		price = 42500,
+		type = 'weapon'
+	},
 	{
 		label = 'Compact Rifle',
 		item = 'WEAPON_COMPACTRIFLE',
